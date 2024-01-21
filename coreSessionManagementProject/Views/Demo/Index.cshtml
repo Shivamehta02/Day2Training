@@ -1,0 +1,43 @@
+﻿@using coreSessionManagementProject.Models;
+@using Microsoft.AspNetCore.Http;
+@using coreSessionManagementProject.Helpers;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    @{
+        Product product = SessionHelper.GetObjectFromJson<Product>(Context.Session, "product");
+    }
+
+    <h3>Product Information:</h3>
+    <h5>Product Id: @product.Id</h5>
+    <h5>Product Name: @product.Name</h5>
+    <h5>Product Price: @product.Price</h5>
+
+    <hr />
+
+    @{
+        List<Product> products = SessionHelper.GetObjectFromJson<List<Product>>(Context.Session, "products");
+    }
+
+    @foreach (var item in products)
+    {
+        <div>
+            <h5>Product Id: @item.Id</h5>
+            <h5>Product Name: @item.Name</h5>
+            <h5>Product Price: @item.Price</h5>
+        </div>
+    }
+
+</body>
+</html>

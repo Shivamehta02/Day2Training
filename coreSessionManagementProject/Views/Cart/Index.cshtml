@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.cart)
+        {
+            <tr>
+                <td>@item.product.Id</td>
+                <td>@item.product.Name</td>
+                <td>@item.product.Price</td>
+                <td>@item.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>
